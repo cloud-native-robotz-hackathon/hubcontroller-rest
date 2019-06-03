@@ -1,0 +1,24 @@
+metadata:
+  annotations:
+    configmap.fabric8.io/update-on-change: MAP
+spec:
+  replicas: 1
+  template:
+    spec:            
+      volumes:
+        - name: cacerts-volume
+          configMap:               
+            name: cacerts
+      containers:
+        - volumeMounts:
+          - name: cacerts-volume
+            mountPath: /deployment/config
+          env:
+            - name: JAVA_OPTS
+              value: "-Djavax.net.ssl.TrustStore=/deployment/config/cacerts"
+            - name: MAP
+              valueFrom:
+                configMapKeyRef:
+                  key: MAP
+                  name: robot-mapping-configmap
+        

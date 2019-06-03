@@ -1,0 +1,52 @@
+= REST API Level 0 - Spring Boot Booster
+
+IMPORTANT: This booster requires Java 8 JDK or greater and Maven 3.3.x or greater.
+
+
+
+
+
+== Runing the Booster Locally
+
+To run this booster on your local host:
+
+[source,bash,options="nowrap",subs="attributes+"]
+----
+$ unzip hub-controller-live.zip
+
+$ cd hub-controller-live
+
+$ mvn spring-boot:run
+----
+
+== Interacting with the Booster Locally
+
+To interact with your booster while it's running locally, use the form at `http://localhost:8080` or the `curl` command:
+
+
+----
+
+
+== Updating the Booster
+To update your booster:
+
+. Stop your booster.
++
+NOTE: To stop your running booster in a Linux or macOS terminal, use `CTRL+C`. In a Windows command prompt, you can use `CTRL + Break(pause)`.
+
+. Make your change (e.g. edit `src/main/resources/static/index.html`).
+. Restart your booster.
+. Confirm your change appears.
+
+
+== Running the Booster on a Single-node OpenShift Cluster
+
+----
+$ oc login -u developer -p developer
+
+$ oc new-project MY_PROJECT_NAME
+
+$ mvn clean fabric8:deploy -Popenshift
+----
+
+
