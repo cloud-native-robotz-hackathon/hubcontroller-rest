@@ -280,7 +280,7 @@ public class RobotEndpointAMQ {
         System.out.println("Creating JSON Message with -> " + operation + " " + parameter);
         Map<String, String> map = new HashMap<>();
         map.put("operation", operation);
-        map.put("paramter", parameter);
+        map.put("parameter", parameter);
 
         ObjectMapper mapper = new ObjectMapper();
 
