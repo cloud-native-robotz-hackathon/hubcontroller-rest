@@ -1,6 +1,6 @@
 = Hub Controller Rest
 
-This application is part of the Cloud Native Robots Hackathon infrastructure. It routes the RES request from 3Scale to the specific robot.
+This application is part of the Cloud Native Robots Hackathon infrastructure. It routes the REST requests from 3Scale to the specific robot.
 
 
 It exposes a RESTful API under /api/robots and extracts the token from each request as query parameter *user_key*, looks up the Robot IP in the configmap *robot-mapping-configmap* in JSON format and resends the request to the specific Robot IP.
