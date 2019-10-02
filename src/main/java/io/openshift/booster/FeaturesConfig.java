@@ -12,8 +12,8 @@ public class FeaturesConfig {
   @Value("${cxf.path}")
   private String basePath;
 
-  @Bean("swagger2Feature")
-  public Feature swagger2Feature() {
+  //@Bean("swagger2Feature")
+  /*public Feature swagger2Feature() {
     Swagger2Feature result = new Swagger2Feature();
     result.setTitle("Robot API");
     result.setDescription("RESTful API to control your robot");
@@ -24,4 +24,5 @@ public class FeaturesConfig {
     result.setPrettyPrint(true);
     return result;
   }
+  */
 }

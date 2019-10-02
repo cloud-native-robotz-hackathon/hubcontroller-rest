@@ -4,18 +4,9 @@ metadata:
 spec:
   replicas: 1
   template:
-    spec:            
-      volumes:
-        - name: cacerts-volume
-          configMap:               
-            name: cacerts
+    spec:                  
       containers:
-        - volumeMounts:
-          - name: cacerts-volume
-            mountPath: /deployment/config
-          env:
-            - name: JAVA_OPTIONS
-              value: "-Djavax.net.ssl.trustStore=/deployment/config/cacerts -Djavax.net.ssl.trustStorePassword=changeit"
+        - env:            
             - name: MAP
               valueFrom:
                 configMapKeyRef:

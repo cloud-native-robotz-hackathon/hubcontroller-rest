@@ -1,52 +1,31 @@
-= REST API Level 0 - Spring Boot Booster
+= Hub Controller Rest
 
-IMPORTANT: This booster requires Java 8 JDK or greater and Maven 3.3.x or greater.
-
-
+This application is part of the Cloud Native Robots Hackathon infrastructure. It routes the RES request from 3Scale to the specific robot.
 
 
+It exposes a RESTful API under /api/robots and extracts the token from each request as query parameter *user_key*, looks up the Robot IP in the configmap *robot-mapping-configmap* in JSON format and resends the request to the specific Robot IP.
 
-== Runing the Booster Locally
+You can modify the prefilled configmap under templates/robotmapping-configmap.yaml
 
-To run this booster on your local host:
 
-[source,bash,options="nowrap",subs="attributes+"]
-----
-$ unzip hub-controller-live.zip
+IMPORTANT: This only works when the Robots are connected via OpenVPN to the OpenShift cluster. 
 
-$ cd hub-controller-live
+IMPORTANT: The application requires Java 8 JDK or greater and Maven 3.3.x or greater.
 
-$ mvn spring-boot:run
-----
-
-== Interacting with the Booster Locally
-
-To interact with your booster while it's running locally, use the form at `http://localhost:8080` or the `curl` command:
-
+== Deploying the Application to an OpenShift Cluster 
 
 ----
+$ oc login ...
 
+$ oc new-project hubcontroller-rest
 
-== Updating the Booster
-To update your booster:
-
-. Stop your booster.
-+
-NOTE: To stop your running booster in a Linux or macOS terminal, use `CTRL+C`. In a Windows command prompt, you can use `CTRL + Break(pause)`.
-
-. Make your change (e.g. edit `src/main/resources/static/index.html`).
-. Restart your booster.
-. Confirm your change appears.
-
-
-== Running the Booster on a Single-node OpenShift Cluster
-
+$ mvn clean fabric8:deploy -Popenshift -DskipTests
 ----
-$ oc login -u developer -p developer
 
-$ oc new-project MY_PROJECT_NAME
+Just run the last command again to update to a new version.
 
-$ mvn clean fabric8:deploy -Popenshift
-----
+When modifying the configmap in OpenShift, make sure to redeploy the application from the OpenSHift Console
+
+TIP: When troubleshooting connection issues check out the the logfile of the Pod in in the OpenShift Console
 
 
