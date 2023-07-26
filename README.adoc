@@ -1,5 +1,7 @@
 = Hub Controller Rest
 
+## ARCHIVED VERSION : Check the aktive repos for the current version 
+
 This application is part of the Cloud Native Robots Hackathon infrastructure. It routes the REST requests from 3Scale to the specific robot.
 
 
